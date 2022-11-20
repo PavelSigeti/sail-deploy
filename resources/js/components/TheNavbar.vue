@@ -1,11 +1,11 @@
 <template>
     <ul class="menu">
-        <li class="menu-item"><router-link to="/dashboard"><i class="ri-function-line"></i><span>Главная</span></router-link></li>
-        <li class="menu-item"><router-link :to="{name: 'user.stages'}"><i class="ri-sailboat-line"></i><span>Регаты</span></router-link></li>
-        <li class="menu-item"><router-link to="/dashboard"><i class="ri-trophy-line"></i><span>Результаты регат</span></router-link></li>
-        <li class="menu-item"><router-link to="/dashboard"><i class="ri-team-line"></i><span>Команды</span></router-link></li>
-        <li class="menu-item"><router-link to="/dashboard"><i class="ri-file-line"></i><span>Регламент</span></router-link></li>
-        <li class="menu-item"><router-link to="/dashboard"><i class="ri-information-line"></i><span>О проекте</span></router-link></li>
+        <li class="menu-item"><router-link to="/dashboard"><img src="@/static/menu/lk.svg" alt="ЛК"><span>Личный кабинет</span></router-link></li>
+        <li class="menu-item"><router-link :to="{name: 'user.stages'}"><img src="@/static/menu/yacht.svg" alt="ЛК"><span>Регаты</span></router-link></li>
+        <li class="menu-item"><router-link to="/"><img src="@/static/menu/result.svg" alt="ЛК"><span>Результаты регат</span></router-link></li>
+        <li class="menu-item"><router-link to="/"><img src="@/static/menu/team.svg" alt="ЛК"><span>Команды</span></router-link></li>
+        <li class="menu-item"><router-link to="/"><img src="@/static/menu/rules.svg" alt="ЛК"><span>Регламент</span></router-link></li>
+        <li class="menu-item"><router-link to="/"><img src="@/static/menu/about.svg" alt="ЛК"><span>О проекте</span></router-link></li>
     </ul>
     <TheAdminNavbar v-if="admin" />
 

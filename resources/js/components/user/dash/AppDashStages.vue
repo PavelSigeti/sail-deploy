@@ -6,17 +6,20 @@
             <div class="dash-stage__tournament">/{{stage.tournament}}</div>
             <div class="user-stage__participant" v-if="stage.users_exists">Вы участвуете</div>
         </div>
-        <div v-if="stage.excerpt" class="dash-stage__excerpt content" v-html="stage.excerpt"></div>
         <div class="dash-stage__date">
             <span>Начало регистрации: {{time(stage.register_start)}}</span>
             <span>Окончание регистрации: {{time(stage.register_end)}}</span>
             <span>Начало гонок: {{time(stage.race_start)}}</span>
         </div>
         <div
+            v-if="now < time(stage.register_end)"
              :class="['btn', 'btn-settings-280', {'btn-default': !stage.users_exists}, {'btn-border': stage.users_exists}]"
              @click="toggleReg"
         >
             {{stage.users_exists ? 'Отказаться от участия' : 'Принять участие'}}
+        </div>
+        <div class="btn btn-disable btn-settings-280" v-else>
+            Регата проходит
         </div>
     </div>
 </template>

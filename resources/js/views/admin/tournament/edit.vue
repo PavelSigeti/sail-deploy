@@ -112,7 +112,7 @@ export default {
                     description: description.value,
                 });
                 store.dispatch('notification/displayMessage', {
-                    value: 'Серия успешно обнавлена',
+                    value: 'Серия успешно обновлена',
                     type: 'primary',
                 });
             } catch (e) {

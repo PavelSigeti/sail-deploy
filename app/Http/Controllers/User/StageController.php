@@ -25,7 +25,7 @@ class StageController extends Controller
     public function actualDashboard()
     {
         $user = Auth::user();
-        return $this->stageRepository->getActualDashboard(25);
+        return $this->stageRepository->getActualDashboard($user->id);
     }
 
     public function registeredStage()

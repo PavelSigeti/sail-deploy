@@ -1,21 +1,19 @@
 <template>
     <TheNotification v-if="message" :payload="{message, type}"></TheNotification>
-    <div class="container-fluid container-1890">
-        <div class="row">
-            <div class="col-xl-2 sidebar__container">
-                <div class="sidebar">
-                    <div class="sidebar-main">
-                        <AppUser />
-                        <the-navbar></the-navbar>
-                    </div>
-                    <div class="sidebar-bottom">
-                        <div class="menu-item menu-item__exit" @click="logout"><a @click.prevent="logout" href="#"><img src="@/static/exit.svg" alt=""><span>Выйти</span></a></div>
-                    </div>
+    <div class="grid-container">
+        <div class="sidebar-container">
+            <div class="sidebar">
+                <div class="sidebar-main">
+                    <AppUser />
+                    <the-navbar></the-navbar>
+                </div>
+                <div class="sidebar-bottom">
+                    <div class="menu-item menu-item__exit" @click="logout"><a @click.prevent="logout" href="#"><img src="@/static/exit.svg" alt="exit"><span>Выйти</span></a></div>
                 </div>
             </div>
-            <div class="col-xl-10">
-                <router-view></router-view>
-            </div>
+        </div>
+        <div class="main-container">
+            <router-view></router-view>
         </div>
     </div>
 </template>

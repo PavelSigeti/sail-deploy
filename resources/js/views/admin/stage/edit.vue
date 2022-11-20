@@ -24,16 +24,16 @@
                                 <input class="form-input" type="text" id="title" v-model="title" placeholder="Название этапа">
                             </div>
                             <div class="form-control">
-                                <label for="race_amount_drop">Кол-во выбрасов (до 18 челов)</label>
-                                <input class="form-input" type="text" id="race_amount_drop" v-model="race_amount_drop" placeholder="Кол-во выбрасов (до 18 челов)">
+                                <label for="race_amount_drop">Кол-во выбросов (до 18 челов)</label>
+                                <input class="form-input" type="text" id="race_amount_drop" v-model="race_amount_drop" placeholder="Кол-во выбросов (до 18 челов)">
                             </div>
                             <div class="form-control">
-                                <label for="race_amount_drop">Кол-во выбрасов в группах (от 19 челов)</label>
-                                <input class="form-input" type="text" id="race_amount_group_drop" v-model="race_amount_group_drop" placeholder="Кол-во выбрасов в группах (от 19 челов)">
+                                <label for="race_amount_drop">Кол-во выбросов в группах (от 19 челов)</label>
+                                <input class="form-input" type="text" id="race_amount_group_drop" v-model="race_amount_group_drop" placeholder="Кол-во выбросов в группах (от 19 челов)">
                             </div>
                             <div class="form-control">
-                                <label for="race_amount_drop">Кол-во выбрасов во флотах (от 19 челов)</label>
-                                <input class="form-input" type="text" id="race_amount_fleet_drop" v-model="race_amount_fleet_drop" placeholder="Кол-во выбрасов во флотах (от 19 челов)">
+                                <label for="race_amount_drop">Кол-во выбросов во флотах (от 19 челов)</label>
+                                <input class="form-input" type="text" id="race_amount_fleet_drop" v-model="race_amount_fleet_drop" placeholder="Кол-во выбросов во флотах (от 19 челов)">
                             </div>
                             <div class="form-control">
                                 <label for="excerpt">Краткое описание</label>
@@ -172,7 +172,7 @@ export default {
                     }
                 }
                 store.dispatch('notification/displayMessage', {
-                    value: 'Этап успешно обнавлен',
+                    value: 'Этап успешно обновлен',
                     type: 'primary',
                 });
                 loading.value = false;

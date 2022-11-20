@@ -10,10 +10,10 @@
                 Команда: <span class="b500">{{invite.name}}</span>
             </div>
             <div class="team-invite__buttons">
-                <div class="btn btn-default btn-team" @click="acceptInvite(invite.id)">
+                <div class="btn btn-default btn-team btn-accept" @click="acceptInvite(invite.id)">
                     Принять
                 </div>
-                <div class="btn btn-border btn-team" @click="rejectInvite(invite.id, idx)">
+                <div class="btn btn-border btn-team btn-cancel" @click="rejectInvite(invite.id, idx)">
                     Откзаться
                 </div>
             </div>

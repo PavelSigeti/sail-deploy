@@ -89,7 +89,7 @@ class StageRepository extends CoreRepository
         $columns = [
             'stages.id', 'register_start', 'register_end',
             'race_start', 'stages.title', 'tournaments.title as tournament',
-            'excerpt', 'status',
+            'status',
         ];
 
         $result = $this->startConditions()
@@ -140,7 +140,7 @@ class StageRepository extends CoreRepository
             ->join('tournaments', 'stages.tournament_id', '=', 'tournaments.id')
             ->join('stage_user', 'stages.id', 'stage_user.stage_id')
             ->where('user_id', $id)
-            ->orderBy('race_start')
+            ->orderBy('race_start', 'desc')
             ->get()
             ->map(function ($item) {
                 $item['users_exists'] = true;

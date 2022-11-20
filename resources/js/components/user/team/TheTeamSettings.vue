@@ -23,7 +23,7 @@
                             v-if="owner && team.owner_id !== user.id"
                             @click="removeTeammate(user.id, idx)"
                         >
-                            <div class="btn btn-border btn-team">Исключить</div>
+                            <div class="btn btn-border btn-team btn-cancel">Исключить</div>
                         </div>
                     </div>
                 </div>
@@ -39,16 +39,7 @@
             </form>
         </div>
 
-
-        <AppUserSearchForm
-            v-if="owner && teamInvites && teammates && teamInvites.length < 3 - teammates.length"
-            :team_id="team.id"
-            @invite="addInvite"
-            @load="toggleLoad"
-        />
-
         <div class="team-invites" v-if="teamInvites && teamInvites.length > 0">
-            <h3>Приглашения</h3>
             <div
                 class="user-item"
                 v-for="(invite, idx) in teamInvites"
@@ -64,10 +55,17 @@
                     </div>
                 </div>
                 <div class="user-item__btn" @click="cancelInvite(invite.id, idx)">
-                    <div class="btn btn-border btn-team">Отменить</div>
+                    <div class="btn btn-border btn-team btn-cancel">Отменить</div>
                 </div>
             </div>
         </div>
+
+        <AppUserSearchForm
+            v-if="owner && teamInvites && teammates && teamInvites.length < 3 - teammates.length"
+            :team_id="team.id"
+            @invite="addInvite"
+            @load="toggleLoad"
+        />
         <button class="btn btn-border btn-full-width" v-if="owner" @click="deleteTeam">Расформировать команду</button>
         <button
             v-if="!owner && team"
@@ -76,8 +74,9 @@
         >
             Покинуть команду
         </button>
+    </div>
+    <div class="dashboard-item" v-if="invites && invites.length > 0">
         <AppTeamInvite
-            v-if="invites && invites.length > 0"
             :invites="invites"
             @update="getData"
             @load="toggleLoad"
@@ -94,7 +93,7 @@ import {useStore} from "vuex";
 import AppLoader from "../../ui/AppLoader.vue";
 
 export default {
-    name: "TheTeamCreateForm",
+    name: "TheTeamSettings",
     components: {
         AppUserSearchForm, AppTeamInvite, AppLoader,
     },

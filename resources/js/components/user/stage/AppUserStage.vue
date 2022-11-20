@@ -3,7 +3,7 @@
         <AppLoader v-if="loading" />
         <div  class="user-stage__header">
             <router-link :to="`/dashboard/stage/${stage.id}`" class="user-stage__title">{{stage.title}}</router-link>
-            <div class="user-stage__tournament">/{{stage.tournament}}</div>
+            <div class="user-stage__tournament">{{stage.tournament}}</div>
             <div class="user-stage__participant" v-if="stage.users_exists">Вы участвуете</div>
         </div>
         <div v-if="stage.excerpt" class="user-stage__excerpt content" v-html="stage.excerpt"></div>

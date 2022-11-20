@@ -4,6 +4,8 @@
 
 $dark: #242424;
 $grey: #EEEEEE;
+$blue: #187cff;
+$blue-light: #b9d3ff;
 
 @font-face {
     font-family: "Jost";
@@ -32,7 +34,7 @@ a {
 }
 body {
     background-color: #F8F8FA;
-    font-size: 16px;
+    font-size: 15px;
     color: #242424;
     font-family: 'Jost';
 }
@@ -206,33 +208,63 @@ h2 {
         opacity: .8;
     }
 }
-.container-1890 {
-    max-width: 1890px;
-    width: auto;
-}
 .menu-item {
     margin-right: 10px;
     a {
-        padding: 0 10px;
-        color: #242424;
+        padding: 0 5px;
+        color: #333;
         display: flex;
         align-items: center;
         border-radius: 10px;
         flex-direction: row;
         height: 50px;
         transition: .3s;
+        position: relative;
         &:hover {
             background-color: $grey;
         }
     }
     span {
         font-size: 1.2em;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        &:before {
+            width: 100%;
+            height: 22px;
+            background-color: #F8F8FA;
+            opacity: 0;
+            content: '';
+            position: absolute;
+            display: flex;
+            border-radius: 30px;
+            left: -7px;
+            transition: .5s;
+            z-index: -1;
+            margin-top: 1px;
+        }
     }
-    i {
-        font-size: 2em;
-        color: #333;
+    img {
+        width:  42px;
+        height: 42px;
         margin-right: 15px;
+        z-index: 100;
     }
+    a.active {
+        background-color: unset;
+        span {
+            z-index: 100;
+            &:before {
+                background-color: $blue-light;
+                opacity: 1;
+            }
+        }
+    }
+}
+.menu-item__exit {
+    margin-bottom: 15px;
 }
 .user-icon {
     width: 70px;
@@ -240,6 +272,9 @@ h2 {
     overflow: hidden;
     border-radius: 50px;
     box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, .1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     img {
         width: 70px;
         height: 70px;
@@ -284,7 +319,7 @@ h2 {
         }
     }
 }
-.sidebar__container {
+.sidebar-container {
     position: relative;
     border-right: 1px solid #ddd;
     padding-top: 30px;
@@ -303,14 +338,6 @@ h2 {
 .sidebar-bottom {
     width: 100%;
     position: relative;
-}
-.menu-item__exit {
-    margin-bottom: 15px;
-    img {
-        width: 32px;
-        height: 32px;
-        margin-right: 15px;
-    }
 }
 h1 {
     font-size: 2.25em;
@@ -390,6 +417,10 @@ h1 {
 .btn-full-width {
     width: 100%;
     height: 55px;
+}
+.btn-disable {
+    background-color: $grey;
+    cursor: default;
 }
 .teammate-container {
     display: flex;
@@ -513,7 +544,6 @@ h1 {
     }
 }
 .team-invites {
-    margin-top: 15px;
     .team-invite__item:last-child {
         margin-bottom: 0;
     }
@@ -647,15 +677,15 @@ h1 {
 }
 .user-stage__header {
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    margin-bottom: 30px;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 .user-stage__title {
     font-weight: 500;
     font-size: 1.5em;
     color: #242424;
     transition: .3s;
+    margin-bottom: 5px;
     &:hover {
         text-decoration: underline;
     }
@@ -666,11 +696,12 @@ h1 {
 }
 .user-stage__participant {
     border: 2px solid $dark;
-    align-self: center;
+    align-self: flex-end;
     padding: 5px 8px;
     font-size: .95em;
     border-radius: 5px;
     font-weight: 500;
+    position: absolute;
 }
 .user-stage__excerpt {
     font-size: 1.1em;
@@ -705,10 +736,11 @@ h1 {
     display: flex;
     align-items: center;
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     .user-stage__participant {
         position: absolute;
         right: 0px;
+        align-self: unset;
     }
 }
 .dash-stage__tournament {
@@ -725,18 +757,32 @@ h1 {
 .dash-stage__date {
     display: flex;
     flex-direction: column;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
+    span {
+        margin-bottom: 5px;
+    }
 }
 .dash-stage {
     display: flex;
     flex-direction: column;
     padding: 15px;
-    box-shadow: 0px 0px 40px 5px rgba(0, 0, 0, .1);
+    box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, .1);
     border-radius: 10px;
     .btn {
         width: 100%;
         height: 45px;
     }
+}
+.grid-container {
+    max-width: 1920px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: calc(1/6 * 100%) auto;
+    padding: 0 30px;
+}
+.main-container {
+    height: 5000px;
 }
 
 
@@ -859,4 +905,18 @@ body .vue3-progress-bar-container .vue3-progress-bar {
 }
 .mb0 {
     margin-bottom: 0;
+}
+.btn-cancel {
+    &:hover {
+        background-color: #ff3535;
+        color: #fff;
+        box-shadow: inset 0 0 0 2px #ff3535;
+    }
+}
+.btn-accept {
+    &:hover {
+        background-color: #36d567;
+        color: #fff;
+        box-shadow: inset 0 0 0 2px #36d567;
+    }
 }

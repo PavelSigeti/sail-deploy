@@ -78,7 +78,7 @@ export default {
                     text: text.value,
                 });
                 store.dispatch('notification/displayMessage', {
-                    value: 'Страница обнавлена',
+                    value: 'Страница обновлена',
                     type: 'primary',
                 });
             } catch (e) {

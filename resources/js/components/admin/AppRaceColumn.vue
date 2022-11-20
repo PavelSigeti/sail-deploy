@@ -37,7 +37,7 @@ export default {
                     result: result.value,
                 });
                 store.dispatch('notification/displayMessage', {
-                    value: 'Данные гонки обнавлены',
+                    value: 'Данные гонки обновлены',
                     type: 'primary',
                 });
                 emit('update');
