@@ -29,16 +29,18 @@ Route::group([/*'middleware' => 'auth:sanctum'*/], function () {
     Route::delete('/team-invite/{id}/delete', [\App\Http\Controllers\User\TeamInviteController::class, 'destroy']);
     Route::post('/team-invite/{id}/accept', [\App\Http\Controllers\User\TeamInviteController::class, 'accept']);
 
-    Route::get('/user-settings',[\App\Http\Controllers\User\UserController::class, 'settings']);
-    Route::patch('/user/update',[\App\Http\Controllers\User\UserController::class, 'update']);
+    Route::get('/user-settings', [\App\Http\Controllers\User\UserController::class, 'settings']);
+    Route::patch('/user/update', [\App\Http\Controllers\User\UserController::class, 'update']);
 
-    Route::get('/stage/{id}/show',[\App\Http\Controllers\User\StageController::class, 'show']);
+    Route::get('/stage/{id}/show', [\App\Http\Controllers\User\StageController::class, 'show']);
     Route::get('/stage/actual', [\App\Http\Controllers\User\StageController::class, 'actual']);
     Route::get('/stage/actual/dashboard', [\App\Http\Controllers\User\StageController::class, 'actualDashboard']);
     Route::get('/stage/registered-stage', [\App\Http\Controllers\User\StageController::class, 'registeredStage']);
     Route::get('/stage/ended', [\App\Http\Controllers\User\StageController::class, 'ended']);
     Route::post('/stage/{id}/accept', [\App\Http\Controllers\User\StageController::class, 'accept']);
     Route::post('/stage/{id}/cancel', [\App\Http\Controllers\User\StageController::class, 'cancel']);
+
+    Route::post('/feedback', [\App\Http\Controllers\User\FeedbackController::class, 'store']);
 });
 
 Route::group([/*'middleware' => ['auth:sanctum',  'admin' ]*/], function () {
@@ -85,7 +87,7 @@ Route::group([/*'middleware' => ['auth:sanctum',  'admin' ]*/], function () {
 });
 
 
-Route::group([], function() {
+Route::group([], function () {
     Route::get('/stage/{id}', [\App\Http\Controllers\Guest\StageController::class, 'getResult']);
     Route::get('/universities', \App\Http\Controllers\Guest\RegistrationController::class);
 });

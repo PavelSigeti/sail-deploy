@@ -3,8 +3,11 @@
         <div class="modal-background" @click="$emit('close');"></div>
         <div class="modal-container">
             <AppLoader v-if="loading"/>
-            <h2>Вход</h2>
-            <Form @submit="login" class="home-form" :validation-schema="validationSchema">
+            <div class="loading-overlay" v-if="msg">
+                Проверьте свою почту
+            </div>
+            <h2>Восстановить пароль</h2>
+            <Form @submit="reset" class="home-form" :validation-schema="validationSchema">
                 <div class="form-control">
                     <Field name="email" v-slot="{ field, errors }">
                         <input v-bind="field" type="email" :class="['form-input', {'invalid': !!errors.length} ]"
@@ -12,19 +15,9 @@
                     </Field>
                     <ErrorMessage class="alert" name="email"/>
                 </div>
-                <div class="form-control">
-                    <Field name="password" v-slot="{ field, errors }">
-                        <input v-bind="field" type="password" :class="['form-input', {'invalid': !!errors.length} ]"
-                               placeholder="Пароль"/>
-                    </Field>
-                    <ErrorMessage class="alert" name="password"/>
-                </div>
 
-
-                <button class="btn btn-default btn-home">Войти</button>
-                <div class="form-info jcc">Нет аккаунта?&nbsp;<span class="underline link" @click="$emit('switchReg');">Зарегистрироваться</span>
-                </div>
-                <div class="form-info jcc">Забыл пароль?&nbsp;<span class="underline link" @click="$emit('forget');">Восстановить</span>
+                <button class="btn btn-default btn-home">Отправить</button>
+                <div class="form-info jcc">Вернуться обратно&nbsp;<span class="underline link" @click="$emit('change');">Войти</span>
                 </div>
             </Form>
         </div>
@@ -37,15 +30,16 @@ import {useStore} from "vuex";
 import * as yup from "yup";
 import {Field, Form, ErrorMessage} from 'vee-validate';
 import AppLoader from "../ui/AppLoader.vue";
+import axios from "axios";
 
 export default {
-    name: "AppLoginForm",
+    name: "AppForgetPassword",
     components: {
         Field, Form, ErrorMessage,
         AppLoader,
     },
     emits: [
-        'close', 'switchReg', 'forget',
+        'close', 'change',
     ],
     setup() {
         const store = useStore();
@@ -54,17 +48,28 @@ export default {
 
         const validationSchema = yup.object({
             email: yup.string().required('Введите E-mail').email('Не корректный E-mail'),
-            password: yup.string().required('Введите пароль').min(3, 'Пароль от 3 символов'),
         });
 
-        const login = (values) => {
+        const msg = ref(false);
+
+        const reset = async (values) => {
             loading.value = true;
-            store.dispatch('auth/login', values);
+            try {
+                await axios.get('/sanctum/csrf-cookie');
+                await axios.post('/forgot-password', {
+                    email: values.email,
+                });
+                msg.value = 'Проверьте свою почту!';
+            } catch (e) {
+                console.log(e.message);
+            }
             loading.value = false;
+            msg.value = true;
         };
 
         return {
-            login, validationSchema, loading,
+            validationSchema, loading,
+            reset, msg,
         }
     }
 }

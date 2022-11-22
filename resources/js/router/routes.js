@@ -18,19 +18,11 @@ export default [
         }
     },
     {
-        path: '/reset',
-        name: 'Reset',
-        component: () => import('../views/Reset.vue'),
-        meta: {
-            layout: 'Auth',
-        }
-    },
-    {
         path: '/reset-password/:token',
         name: 'Reset-password',
         component: () => import('../views/ResetPassword.vue'),
         meta: {
-            layout: 'Auth',
+            layout: 'HomePage',
         }
     },
     {

@@ -25,7 +25,6 @@ import { useStore } from 'vuex';
 import { computed } from 'vue';
 import AppUser from '../components/ui/AppUser.vue';
 
-
 export default {
     name: "AdminLayout",
     components: {

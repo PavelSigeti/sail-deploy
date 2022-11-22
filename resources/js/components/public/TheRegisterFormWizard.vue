@@ -79,7 +79,7 @@
 import { useForm, Field, ErrorMessage } from 'vee-validate';
 import { ref, computed, onMounted } from 'vue';
 import useUniversities from "../../composables/universities.js";
-import vSelect from 'vue-select'
+import vSelect from 'vue-select';
 import 'vue-select/dist/vue-select.css';
 export default {
     name: "TheRegisterFormWizard",

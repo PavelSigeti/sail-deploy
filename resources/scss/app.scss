@@ -111,6 +111,7 @@ h2 {
     overflow-y: auto;
     padding-top: 15px;
     padding-bottom: 15px;
+    z-index: 1000;
 }
 .modal-background {
     position: fixed;
@@ -143,6 +144,7 @@ h2 {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+    position: relative;
     .alert {
         margin-top: 2px;
         color: #ff5b5b;
@@ -174,6 +176,10 @@ h2 {
     .vs__open-indicator {
         fill: #394066;
     }
+    label {
+        margin-bottom: 10px;
+        font-size: 1.1em;
+    }
 }
 .form-input {
     max-width: 100%;
@@ -185,11 +191,20 @@ h2 {
     border-radius: 10px;
     font-size: 1em;
 }
+.form-textarea {
+    border: 0px;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #EBEBEB;
+    resize: vertical;
+    outline: none;
+    min-height: 250px;
+}
 .btn-home {
     width: 100%;
     height: 55px;
 }
-.form-input.invalid {
+.form-input.invalid, .form-textarea.invalid {
     outline: 2px solid #ff5b5b;
 }
 .form-info {
@@ -307,10 +322,13 @@ h2 {
 .user-icon {
     margin-right: 20px;
 }
+.user-data {
+    color: #242424;
+}
 .user-settings {
     font-size: 1.2em;
     cursor: pointer;
-    margin-right: 10px;
+    margin-right: 5px;
     a {
         color: #bbb;
         transition: .3s;
@@ -408,10 +426,6 @@ h1 {
     p {
         font-size: 1.1em;
         margin-bottom: 15px;
-    }
-    label {
-        margin-bottom: 10px;
-        font-size: 1.1em;
     }
 }
 .btn-full-width {
@@ -781,9 +795,136 @@ h1 {
     grid-template-columns: calc(1/6 * 100%) auto;
     padding: 0 30px;
 }
-.main-container {
-    height: 5000px;
+.support-container {
+    display: flex;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    flex-direction: column;
+    max-width: 500px;
+    width: 100%;
+    height: 100vh;
+    background-color: #F8F8F8;
+    padding: 30px;
+    box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, .1);
 }
+.close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    &:before, &:after {
+        content: '';
+        background-color: #242424;
+        width: 24px;
+        height: 2px;
+        position: absolute;
+        transform: rotate(45deg);
+        transition: .3s;
+    }
+    &:after {
+        transform: rotate(-45deg);
+    }
+    &:hover {
+        &:before, &:after {
+            background-color: #ff3535;
+        }
+    }
+}
+.support-done {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff90;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.3em;
+    z-index: 100;
+}
+.home-container {
+    background-color: #242424;
+    padding: 4px;
+    margin-top: 60px;
+}
+.home-main {
+    background-color: #f8f8f8;
+    padding: 60px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    h1 {
+        font-weight: 600;
+        font-size: 4.3em;
+        text-transform: uppercase;
+        line-height: 1.5em;
+        margin-bottom: 30px;
+    }
+    .btn {
+        height: 50px;
+        width: fit-content;
+        padding: 0 32px;
+        text-transform: uppercase;
+    }
+}
+.home-links {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: 1fr 1fr;
+}
+.home-link {
+    background-color: #f8f8f8;
+    padding: 60px;
+    border-radius: 10px;
+    font-size: 3em;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    span {
+        z-index: 10;
+        position: relative;
+        transition: .75s;
+    }
+    &:hover {
+        color: #fff;
+        .home-link__hover {
+            width: calc(100% + 4px);
+        }
+    }
+}
+.home-link__hover {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background-color: #242424;
+    z-index: 1;
+    transition: .5s;
+    border-radius: 10px;
+}
+.row-homepage {
+    height: 50px;
+}
+
+
+
+
+
+
 
 
 
@@ -808,6 +949,9 @@ h1 {
 }
 .mb30 {
     margin-bottom: 30px;
+}
+.mt30 {
+    margin-top: 30px;
 }
 .notification {
     position: fixed;
@@ -894,6 +1038,9 @@ body .vue3-progress-bar-container .vue3-progress-bar {
     align-items: center;
     background-color: rgba(255,255,255, .5);
     z-index: 300;
+    font-weight: 600;
+    font-size: 1.5em;
+    user-select: none;
 }
 .b500 {
     font-weight: 500;

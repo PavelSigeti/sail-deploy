@@ -18,9 +18,7 @@
         >
             {{stage.users_exists ? 'Отказаться от участия' : 'Принять участие'}}
         </div>
-        <div class="btn btn-disable btn-settings-280" v-else>
-            Регата проходит
-        </div>
+        <div class="btn btn-disable btn-settings-280" v-else>Регата проходит</div>
     </div>
 </template>
 
