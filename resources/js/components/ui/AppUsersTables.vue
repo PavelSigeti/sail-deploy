@@ -9,7 +9,9 @@
         <tbody>
             <tr v-for="(user, i) in users" :key="i">
                 <td>{{i+1}}</td>
-                <td>{{user.name}}</td>
+                <td><div class="result-table__name">
+                    {{user.name}} {{user.surname}} <span class="result-table__nick">{{user.nickname}}</span>
+                </div></td>
             </tr>
         </tbody>
     </table>

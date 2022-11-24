@@ -18,7 +18,7 @@
         <div class="user-stage__info" v-else-if="time(stage.race_start) < now && stage.status !== 'finished'">
             Регата проходит
         </div>
-        <div v-else-if="stage.status === 'active'"
+        <div v-else-if="stage.status === 'active' && time(stage.register_end) > now"
             :class="['btn', 'btn-settings-280', {'btn-default': !stage.users_exists}, {'btn-border': stage.users_exists}]"
             @click="toggleReg"
         >
@@ -30,6 +30,8 @@
         <div class="user-stage__info" v-else>
             Ожидайте
         </div>
+
+        <router-link :to="`/dashboard/stage/${stage.id}`" class="btn btn-border btn-settings-280 mt10">Подробнее</router-link>
     </div>
 </template>
 

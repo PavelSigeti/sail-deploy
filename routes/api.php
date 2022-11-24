@@ -89,6 +89,7 @@ Route::group([/*'middleware' => ['auth:sanctum',  'admin' ]*/], function () {
 
 Route::group([], function () {
     Route::get('/stage/{id}', [\App\Http\Controllers\Guest\StageController::class, 'getResult']);
-    Route::get('/universities', \App\Http\Controllers\Guest\RegistrationController::class);
+    Route::get('/universities', [\App\Http\Controllers\Guest\RegistrationController::class, 'universities']);
+    Route::post('/email', [\App\Http\Controllers\Guest\RegistrationController::class, 'email']);
 });
 

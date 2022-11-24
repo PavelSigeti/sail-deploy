@@ -16,7 +16,7 @@
     <main>
         <div class="container">
             <div class="row jcc">
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 jcc">
                     <Form class="modal-container mt30"
                           :validation-schema="validationSchema"
                           @submit="resetPassword"

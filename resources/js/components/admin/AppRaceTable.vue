@@ -1,6 +1,6 @@
 <template>
     <div class="race-table">
-        <h2>{{raceTitle[$props.status]}} #{{$props.groupId}}</h2>
+        <h2 v-if="$props.status">{{raceTitle[$props.status]}} #{{$props.groupId}}</h2>
         <button class="btn btn-default btn-settings mb15" @click="addRace">Добавить гонку</button>
         <div class="race-table__header">
             <div class="race-table__row">

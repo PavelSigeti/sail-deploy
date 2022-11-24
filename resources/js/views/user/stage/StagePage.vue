@@ -12,9 +12,10 @@
                         </div>
                     </div>
                     <div class="dashboard-item" v-if="stage && stage.description">
-                        <div class="content">
-                            {{stage.description}}
-                        </div>
+                        <div class="content" v-html="stage.description"></div>
+                    </div>
+                    <div class="dashboard-item" v-if="stage && stage.status === 'active'">
+                        <AppUsersTables :users="stage.users"  />
                     </div>
                     <div class="dashboard-item" v-if="stage && stage.status !== 'active'">
                         <AppResultTable :id="id" />
@@ -28,6 +29,7 @@
 <script>
 import AppHeader from "@/components/ui/AppHeader.vue";
 import AppResultTable from "@/components/public/AppResultTable.vue";
+import AppUsersTables from "@/components/ui/AppUsersTables.vue";
 import {onMounted, ref} from "vue";
 import {useRoute} from "vue-router";
 import {time} from "@/utils/time.js";
@@ -35,7 +37,7 @@ import {time} from "@/utils/time.js";
 export default {
     name: "StagePage",
     components: {
-        AppHeader, AppResultTable,
+        AppHeader, AppResultTable, AppUsersTables,
     },
     setup() {
         const stage = ref({});
@@ -47,7 +49,6 @@ export default {
                 const response = await axios.get(`/api/stage/${id}/show`);
                 stage.value = response.data;
                 h1.value = stage.value.title;
-                console.log('stage', stage.value.description);
             } catch (e) {
                 console.log(e.message);
             }

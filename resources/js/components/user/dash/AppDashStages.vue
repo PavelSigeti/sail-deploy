@@ -1,9 +1,9 @@
 <template>
     <div class="dash-stage">
         <AppLoader v-if="loading" />
-        <div  class="dash-stage__header">
+        <div class="dash-stage__header">
             <router-link :to="`/dashboard/stage/${stage.id}`" class="dash-stage__title">{{stage.title}}</router-link>
-            <div class="dash-stage__tournament">/{{stage.tournament}}</div>
+            <div class="dash-stage__tournament">{{stage.tournament}}</div>
             <div class="user-stage__participant" v-if="stage.users_exists">Вы участвуете</div>
         </div>
         <div class="dash-stage__date">
@@ -11,14 +11,20 @@
             <span>Окончание регистрации: {{time(stage.register_end)}}</span>
             <span>Начало гонок: {{time(stage.race_start)}}</span>
         </div>
+        <div class="btn btn-disable btn-settings-280" v-if="time(stage.register_start) > now">
+            Регистрация не началась
+        </div>
+        <div class="btn btn-disable btn-settings-280" v-else-if="time(stage.race_start) < now && stage.status !== 'finished'">
+            Регата проходит
+        </div>
         <div
-            v-if="now < time(stage.register_end)"
+            v-else-if="stage.status === 'active' && time(stage.register_end) > now"
              :class="['btn', 'btn-settings-280', {'btn-default': !stage.users_exists}, {'btn-border': stage.users_exists}]"
              @click="toggleReg"
         >
             {{stage.users_exists ? 'Отказаться от участия' : 'Принять участие'}}
         </div>
-        <div class="btn btn-disable btn-settings-280" v-else>Регата проходит</div>
+        <div class="btn btn-disable btn-settings-280" v-else>Ожидайте</div>
     </div>
 </template>
 

@@ -6,7 +6,7 @@
         >
 
             <div v-for="(group, _, idx)  in status" :key="_">
-                <h3>{{statusTitle[key]}} #{{idx+1}}</h3>
+                <h3 v-if="statusTitle[key] !== 'Гонка'">{{statusTitle[key]}} #{{idx+1}}</h3>
                 <table class="result-table">
                     <thead>
                         <tr>
@@ -50,9 +50,12 @@ export default {
         };
 
         onMounted(async () => {
-            const response = await axios.get(`/api/stage/${props.id}`);
-            results.value = response.data;
-            console.log('results', results.value);
+            try {
+                const response = await axios.get(`/api/stage/${props.id}`);
+                results.value = response.data;
+            } catch (e) {
+                console.log(e.message);
+            }
         });
 
         return {

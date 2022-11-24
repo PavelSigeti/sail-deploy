@@ -6,19 +6,19 @@
                     <img src="@/static/logo.svg" alt="vrisc logo" class="logo">
                 </div>
                 <div class="col-6 jcfe">
-                    <div class="login-btn btn btn-border" @click="login = true; bodyOverflow(false)">Вход</div>
-                    <div class="register-btn btn btn-default" @click="register = true; bodyOverflow(false)">Регистрация</div>
+                    <div class="login-btn btn btn-border" @click="login = true">Вход</div>
+                    <div class="register-btn btn btn-default" @click="register = true">Регистрация</div>
                 </div>
             </div>
         </div>
     </header>
     <main>
-        <AppLoginForm v-if="login" @close="login = false; bodyOverflow(true)" @switchReg="changeModal" @forget="toggleForget()"/>
+        <AppLoginForm v-if="login" @close="login = false" @switchReg="changeModal" @forget="toggleForget()"/>
         <keep-alive>
-            <AppForgetPassword v-if="forget" @close="forget = false; bodyOverflow(true)" @change="toggleForget()"/>
+            <AppForgetPassword v-if="forget" @close="forget = false" @change="toggleForget()"/>
         </keep-alive>
         <keep-alive>
-            <AppRegisterForm v-if="register" @close="register = false; bodyOverflow(false)" @switchReg="changeModal" />
+            <AppRegisterForm v-if="register" @close="register = false" @switchReg="changeModal" />
         </keep-alive>
         <div class="container">
             <div class="row">
@@ -26,7 +26,7 @@
                     <div class="home-container">
                         <div class="home-main">
                             <h1>Добро пожаловать,<br> на виртуальный<br> Кубок ИТМО<br> по парусному спорту</h1>
-                            <div class="btn btn-default" @click="register = true; bodyOverflow(false)">Принять участие</div>
+                            <div class="btn btn-default" @click="register = true">Принять участие</div>
                         </div>
                         <div class="home-links">
                             <div class="home-link"><div class="home-link__hover"></div><span>Результаты регат</span></div>
@@ -46,7 +46,6 @@ import {ref} from 'vue';
 import AppLoginForm from "../components/public/AppLoginForm.vue";
 import AppRegisterForm from "../components/public/AppRegisterForm.vue";
 import AppForgetPassword from "../components/public/AppForgetPassword.vue";
-import bodyOverflow from "../utils/bodyOverflow.js";
 
 export default {
     name: "Home",
@@ -69,7 +68,7 @@ export default {
 
         return {
             login, register, changeModal,
-            bodyOverflow, forget, toggleForget,
+            forget, toggleForget,
         }
     }
 }

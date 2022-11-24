@@ -84,6 +84,6 @@ class StageController extends Controller
 
     public function show($id)
     {
-        return $this->stageRepository->getById($id);
+        return $this->stageRepository->getByIdWithUsers($id);
     }
 }

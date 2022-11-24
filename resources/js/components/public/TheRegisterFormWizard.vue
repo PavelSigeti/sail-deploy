@@ -70,7 +70,7 @@
             <div class="form-info mb15">Если вашего университета нет, то пропусте это поле</div>
             <div class="form-info mb15">Отправляя форму, вы соглашаетесь на обработку &nbsp; <span class="underline link" @click="">персональных данных</span></div>
             <button class="btn btn-default btn-home">Зарегистрироваться</button>
-            <div class="form-info jcc"><span class="underline link" @click="step=0">Вернуться назада (2 из 2)</span></div>
+            <div class="form-info jcc"><span class="underline link" @click="step=0">Вернуться назад (2 из 2)</span></div>
         </div>
     </form>
 </template>
@@ -81,6 +81,8 @@ import { ref, computed, onMounted } from 'vue';
 import useUniversities from "../../composables/universities.js";
 import vSelect from 'vue-select';
 import 'vue-select/dist/vue-select.css';
+import { useStore } from 'vuex';
+
 export default {
     name: "TheRegisterFormWizard",
     props: [
@@ -93,6 +95,7 @@ export default {
         vSelect, Field, ErrorMessage,
     },
     setup(props, {emit}) {
+        const store = useStore();
         const step = ref(0);
         const {universities, getUniversities} = useUniversities();
 
@@ -108,11 +111,30 @@ export default {
             keepValuesOnUnmount: true,
         });
 
-        const submit = handleSubmit((values) => {
-            if(step.value === 0) {
-                step.value++;
+        const checkEmail = async (values) => {
+          try {
+              const response = await axios.post('/api/email', {
+                  email: values.email,
+              });
+              return response.data;
+          } catch (e) {
+              console.log(e.message);
+          }
+        };
 
-                return;
+        const submit = handleSubmit(async (values) => {
+            if(step.value === 0) {
+                if(await checkEmail(values) === 0) {
+                    step.value++;
+                    return;
+                } else {
+                    store.dispatch('notification/displayMessage', {
+                        value: 'Email уже занят!',
+                        type: 'error',
+                    })
+                    return;
+                }
+
             }
 
             emit('submitForm', values);

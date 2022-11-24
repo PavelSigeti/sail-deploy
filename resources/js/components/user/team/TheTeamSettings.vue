@@ -66,14 +66,24 @@
             @invite="addInvite"
             @load="toggleLoad"
         />
-        <button class="btn btn-border btn-full-width" v-if="owner" @click="deleteTeam">Расформировать команду</button>
+        <button class="btn btn-border btn-full-width" v-if="owner" @click="leaveConfirm = true">Расформировать команду</button>
+        <AppConfirmation v-if="owner && leaveConfirm"
+                         @confirmation="deleteTeam"
+                         @close="leaveConfirm = false"
+                         question="Расформировать команду?"
+        />
         <button
             v-if="!owner && team"
             class="btn btn-border btn-full-width"
-            @click="removeTeammate(null, null)"
+            @click="leaveConfirm = true"
         >
             Покинуть команду
         </button>
+        <AppConfirmation v-if="!owner && leaveConfirm"
+                         @confirmation="removeTeammate(null, null)"
+                         @close="leaveConfirm = false"
+                         question="Покинуть команду?"
+        />
     </div>
     <div class="dashboard-item" v-if="invites && invites.length > 0">
         <AppTeamInvite
@@ -89,13 +99,15 @@ import {onMounted, ref} from "vue";
 import axios from "axios";
 import AppUserSearchForm from "../AppUserSearchForm.vue";
 import AppTeamInvite from "./AppTeamInvite.vue";
-import {useStore} from "vuex";
+import { useStore } from "vuex";
 import AppLoader from "../../ui/AppLoader.vue";
+import AppConfirmation from "../../ui/AppConfirmation.vue";
 
 export default {
     name: "TheTeamSettings",
     components: {
         AppUserSearchForm, AppTeamInvite, AppLoader,
+        AppConfirmation,
     },
     setup() {
         const store = useStore();
@@ -107,6 +119,7 @@ export default {
         const teammates = ref([]);
         const teamInvites = ref();
         const loading = ref(false);
+        const leaveConfirm = ref(false);
 
         const toggleLoad = () => {
             loading.value = !loading.value;
@@ -121,11 +134,10 @@ export default {
                 owner.value = response.data.owner;
                 teammates.value = response.data.teammates;
                 teamInvites.value = response.data.teamInvites;
-                loading.value = false;
             } catch (e) {
                 console.log(e.message);
-                loading.value = false;
             }
+            loading.value = false;
         };
 
         onMounted(async() => {
@@ -139,7 +151,6 @@ export default {
                     name: name.value,
                 });
                 await getData();
-                loading.value = false;
             } catch (e) {
                 if(e.response.status === 422) {
                     store.dispatch('notification/displayMessage', {
@@ -149,8 +160,8 @@ export default {
                 } else {
                     console.log(e.message);
                 }
-                loading.value = false;
             }
+            loading.value = false;
         };
 
         const cancelInvite = async (id, idx) => {
@@ -162,15 +173,14 @@ export default {
                     value: 'Приглашение отменено',
                     type: 'primary',
                 });
-                loading.value = false;
             } catch (e) {
                 console.log(e.message);
                 store.dispatch('notification/displayMessage', {
                     value: e.message,
                     type: 'error',
                 });
-                loading.value = false;
             }
+            loading.value = false;
         };
 
         const addInvite = (payload) => {
@@ -190,15 +200,15 @@ export default {
                     value: 'Пользователь покинул команду',
                     type: 'primary',
                 });
-                loading.value = false;
+                leaveConfirm.value = false
             } catch (e) {
                 console.log(e.message);
                 store.dispatch('notification/displayMessage', {
                     value: e.response.data.message,
                     type: 'error',
                 });
-                loading.value = false;
             }
+            loading.value = false;
         };
 
         const deleteTeam = async () => {
@@ -217,6 +227,7 @@ export default {
                   type: 'error',
               });
             }
+            leaveConfirm.value = false;
             loading.value = false;
         };
 
@@ -225,7 +236,7 @@ export default {
             owner, addInvite, teamInvites,
             cancelInvite, teammates, invites,
             getData, removeTeammate, deleteTeam,
-            loading, toggleLoad,
+            loading, toggleLoad, leaveConfirm,
         }
     }
 }

@@ -37,7 +37,7 @@ class StageRepository extends CoreRepository
     public function getByIdWithUsers($id)
     {
         $result = $this->startConditions()
-            ->with('users')
+            ->with('users:name,surname,nickname,id')
             ->find($id);
 
         return $result;
