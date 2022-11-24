@@ -903,8 +903,38 @@ h1 {
 .row-homepage {
     height: 50px;
 }
-
-
+.rating-item {
+    background-color: #EBEBEB;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    margin-bottom: 10px;
+}
+.rating-position {
+    font-weight: 500;
+    color: #555;
+    font-size: 1.15em;
+    margin-right: 10px;
+}
+.rating-score {
+    position: absolute;
+    right: 15px;
+    font-weight: 600;
+    font-size: 1.25em;
+}
+.rating-name {
+    display: flex;
+    font-weight: 400;
+    font-size: 1.25em;
+    color: #555;
+}
+.rating-nickname {
+    font-weight: 500;
+    color: #242424;
+}
 
 
 

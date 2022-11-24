@@ -124,6 +124,15 @@ export default [
             auth: true,
         }
     },
+    {
+      path: '/dashboard/rating',
+      name: 'rating',
+      component: () => import('../views/user/Rating.vue'),
+      meta: {
+          layout: 'Auth',
+          auth: true,
+      }
+    },
 
     {
         path: '/:pathMatch(.*)*',

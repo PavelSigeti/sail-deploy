@@ -2,7 +2,7 @@
     <ul class="menu">
         <li class="menu-item"><router-link to="/dashboard"><img src="@/static/menu/lk.svg" alt="ЛК"><span>Личный кабинет</span></router-link></li>
         <li class="menu-item"><router-link :to="{name: 'user.stages'}"><img src="@/static/menu/yacht.svg" alt="ЛК"><span>Регаты</span></router-link></li>
-        <li class="menu-item"><router-link to="/"><img src="@/static/menu/result.svg" alt="ЛК"><span>Результаты регат</span></router-link></li>
+        <li class="menu-item"><router-link :to="{name: 'rating'}"><img src="@/static/menu/result.svg" alt=""><span>Рейтинг</span></router-link></li>
         <li class="menu-item"><router-link to="/"><img src="@/static/menu/team.svg" alt="ЛК"><span>Команды</span></router-link></li>
         <li class="menu-item"><router-link to="/"><img src="@/static/menu/rules.svg" alt="ЛК"><span>Регламент</span></router-link></li>
         <li class="menu-item"><router-link to="/"><img src="@/static/menu/about.svg" alt="ЛК"><span>О проекте</span></router-link></li>
