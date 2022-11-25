@@ -93,5 +93,6 @@ Route::group([], function () {
     Route::post('/email', [\App\Http\Controllers\Guest\RegistrationController::class, 'email']);
     Route::get('/rating/users', [\App\Http\Controllers\Guest\RatingController::class, 'usersRating']);
     Route::get('/rating/university', [\App\Http\Controllers\Guest\RatingController::class, 'universityRating']);
+    Route::get('/rating/team', [\App\Http\Controllers\Guest\RatingController::class, 'teamRating']);
 });
 

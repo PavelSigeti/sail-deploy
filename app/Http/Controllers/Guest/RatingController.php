@@ -18,9 +18,14 @@ class RatingController extends Controller
     {
         return $this->stageResultRepository->getUsersRating();
     }
+
     public function universityRating()
     {
         return $this->stageResultRepository->getUniversityRating();
     }
 
+    public function teamRating()
+    {
+        return $this->stageResultRepository->getTeamRating();
+    }
 }

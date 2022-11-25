@@ -51,4 +51,26 @@ class StageResultRepository extends CoreRepository
 
         return $result;
     }
+
+    public function getTeamRating()
+    {
+        $columns = [
+            'teams.name',
+            DB::raw('SUM(result) as total')
+        ];
+
+
+        $result = $this->startConditions()
+            ->join('stage_user', function($join) {
+                $join->on('stage_results.stage_id', '=', 'stage_user.stage_id');
+                $join->on('stage_results.user_id', '=', 'stage_user.user_id');
+            })
+            ->join('teams', 'stage_user.team_id', '=', 'teams.id')
+            ->select($columns)
+            ->groupBy('team_id')
+            ->orderBy('total', 'DESC')
+            ->paginate(10);
+
+        return $result;
+    }
 }
