@@ -37,4 +37,19 @@ class StageController extends Controller
         return $response;
 
     }
+
+    public function getEnded()
+    {
+        return $this->stageRepository->getAllEnded();
+    }
+
+    public function getActual()
+    {
+        return $this->stageRepository->getAllActual();
+    }
+
+    public function show($id)
+    {
+        return $this->stageRepository->getByIdWithUsers($id);
+    }
 }

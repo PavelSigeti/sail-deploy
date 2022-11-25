@@ -127,6 +127,43 @@ class StageRepository extends CoreRepository
         return $result;
     }
 
+    public function getAllEnded()
+    {
+        $columns = [
+            'stages.id', 'register_start', 'register_end',
+            'race_start', 'stages.title', 'tournaments.title as tournament',
+            'excerpt', 'status',
+        ];
+
+        $result = $this->startConditions()
+            ->select($columns)
+            ->join('tournaments', 'stages.tournament_id', '=', 'tournaments.id')
+            ->where('status', 'finished')
+            ->orderBy('race_start')
+            ->get();
+
+        return $result;
+    }
+
+    public function getAllActual()
+    {
+        $columns = [
+            'stages.id', 'register_start', 'register_end',
+            'race_start', 'stages.title', 'tournaments.title as tournament',
+            'excerpt', 'status',
+        ];
+
+        $result = $this->startConditions()
+            ->select($columns)
+            ->join('tournaments', 'stages.tournament_id', '=', 'tournaments.id')
+            ->where('status', '!=', 'finished')
+            ->orderBy('race_start')
+            ->get();
+
+        return $result;
+    }
+
+
     public function getUserStages($id)
     {
         $columns = [

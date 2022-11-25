@@ -11,8 +11,6 @@
                 </div>
             </div>
         </div>
-    </header>
-    <main>
         <AppLoginForm v-if="login" @close="login = false" @switchReg="changeModal" @forget="toggleForget()"/>
         <keep-alive>
             <AppForgetPassword v-if="forget" @close="forget = false" @change="toggleForget()"/>
@@ -20,39 +18,19 @@
         <keep-alive>
             <AppRegisterForm v-if="register" @close="register = false" @switchReg="changeModal" />
         </keep-alive>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="home-container">
-                        <div class="home-main">
-                            <h1>Добро пожаловать,<br> на виртуальный<br> Кубок ИТМО<br> по парусному спорту</h1>
-                            <div class="btn btn-default" @click="register = true">Принять участие</div>
-                        </div>
-                        <div class="home-links">
-                            <router-link to="/stage" class="home-link"><div class="home-link__hover"></div><span>Регаты</span></router-link>
-                            <router-link to="/rating" class="home-link"><div class="home-link__hover"></div><span>Рейтинг</span></router-link>
-                            <div class="home-link"><div class="home-link__hover"></div><span>Регламент</span></div>
-                            <div class="home-link"><div class="home-link__hover"></div><span>О проекте</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+    </header>
 </template>
 
 <script>
-import {ref} from 'vue';
-import AppLoginForm from "../components/public/AppLoginForm.vue";
-import AppRegisterForm from "../components/public/AppRegisterForm.vue";
-import AppForgetPassword from "../components/public/AppForgetPassword.vue";
-import AppHomeHeader from "../components/ui/AppHomeHeader.vue";
+import AppLoginForm from "@/components/public/AppLoginForm.vue";
+import AppRegisterForm from "@/components/public/AppRegisterForm.vue";
+import AppForgetPassword from "@/components/public/AppForgetPassword.vue";
+import {ref} from "vue";
 
 export default {
-    name: "Home",
+    name: "AppHomeHeader",
     components: {
         AppLoginForm, AppRegisterForm, AppForgetPassword,
-        AppHomeHeader,
     },
     setup() {
         const login = ref(false);

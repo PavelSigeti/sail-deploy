@@ -72,7 +72,6 @@ import { useRoute, useRouter } from 'vue-router';
 import axios from "axios";
 import * as yup from "yup";
 import {Field, Form, ErrorMessage} from 'vee-validate';
-
 export default {
     name: "ResetPassword",
     components: {
@@ -82,14 +81,11 @@ export default {
     setup() {
         const rote = useRoute();
         const router = useRouter();
-
         const loading = ref(false);
-
         const formValues = {
             email: rote.query.email,
             token: rote.params.token,
         };
-
         const validationSchema = yup.object({
             email: yup.string().required('Введите E-mail').email('Не корректный E-mail'),
             password: yup.string().required('Введите пароль').min(8, 'Пароль от 8 символов'),
@@ -98,7 +94,6 @@ export default {
                 .required('Введите пароль')
                 .oneOf([yup.ref('password')], 'Пароли должны совподать'),
         });
-
         const resetPassword = async (values) => {
             try {
                 await axios.get('/sanctum/csrf-cookie');
@@ -111,7 +106,6 @@ export default {
                 console.log(e.message);
             }
         }
-
         return {
             resetPassword, validationSchema, formValues,
             loading,
@@ -121,5 +115,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

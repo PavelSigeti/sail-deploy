@@ -9,6 +9,33 @@ export default [
         }
     },
     {
+        path: '/rating',
+        name: 'home.rating',
+        component: () => import('../views/HomeRating.vue'),
+        meta: {
+            layout: 'HomePage',
+            auth: false,
+        }
+    },
+    {
+        path: '/stage',
+        name: 'home.stage',
+        component: () => import('../views/HomeStage.vue'),
+        meta: {
+            layout: 'HomePage',
+            auth: false,
+        }
+    },
+    {
+        path: '/stage/:id',
+        name: 'home.stage.show',
+        component: () => import('../views/HomeStageShow.vue'),
+        meta: {
+            layout: 'HomePage',
+            auth: false,
+        }
+    },
+    {
         path: '/dashboard',
         name: 'Dashboard',
         component: () => import('../views/Dashboard.vue'),

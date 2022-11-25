@@ -32,7 +32,6 @@ Route::group([/*'middleware' => 'auth:sanctum'*/], function () {
     Route::get('/user-settings', [\App\Http\Controllers\User\UserController::class, 'settings']);
     Route::patch('/user/update', [\App\Http\Controllers\User\UserController::class, 'update']);
 
-    Route::get('/stage/{id}/show', [\App\Http\Controllers\User\StageController::class, 'show']);
     Route::get('/stage/actual', [\App\Http\Controllers\User\StageController::class, 'actual']);
     Route::get('/stage/actual/dashboard', [\App\Http\Controllers\User\StageController::class, 'actualDashboard']);
     Route::get('/stage/registered-stage', [\App\Http\Controllers\User\StageController::class, 'registeredStage']);
@@ -94,5 +93,10 @@ Route::group([], function () {
     Route::get('/rating/users', [\App\Http\Controllers\Guest\RatingController::class, 'usersRating']);
     Route::get('/rating/university', [\App\Http\Controllers\Guest\RatingController::class, 'universityRating']);
     Route::get('/rating/team', [\App\Http\Controllers\Guest\RatingController::class, 'teamRating']);
+
+    Route::get('/home/stage/ended',[\App\Http\Controllers\Guest\StageController::class, 'getEnded']);
+    Route::get('/home/stage/actual',[\App\Http\Controllers\Guest\StageController::class, 'getActual']);
+
+    Route::get('/stage/{id}/show', [\App\Http\Controllers\Guest\StageController::class, 'show']);
 });
 
