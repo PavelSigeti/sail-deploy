@@ -15,14 +15,6 @@
     "file": "assets/yacht.8ddb1ed8.svg",
     "src": "resources/js/static/menu/yacht.svg"
   },
-  "resources/js/static/menu/rules.svg": {
-    "file": "assets/rules.7ac6729d.svg",
-    "src": "resources/js/static/menu/rules.svg"
-  },
-  "resources/js/static/menu/about.svg": {
-    "file": "assets/about.9cd28036.svg",
-    "src": "resources/js/static/menu/about.svg"
-  },
   "resources/js/static/menu/result.svg": {
     "file": "assets/result.fa59c0d8.svg",
     "src": "resources/js/static/menu/result.svg"
@@ -31,9 +23,17 @@
     "file": "assets/team.a655bb04.svg",
     "src": "resources/js/static/menu/team.svg"
   },
+  "resources/js/static/menu/about.svg": {
+    "file": "assets/about.9cd28036.svg",
+    "src": "resources/js/static/menu/about.svg"
+  },
   "resources/js/static/sea.png": {
     "file": "assets/sea.d86dc544.png",
     "src": "resources/js/static/sea.png"
+  },
+  "resources/js/static/menu/rules.svg": {
+    "file": "assets/rules.7ac6729d.svg",
+    "src": "resources/js/static/menu/rules.svg"
   },
   "resources/js/static/crown.svg": {
     "file": "assets/crown.cd3f701d.svg",
@@ -47,13 +47,13 @@
     "file": "assets/jost-400.6f56ef69.ttf",
     "src": "resources/fonts/jost-400.ttf"
   },
-  "resources/fonts/jost-600.ttf": {
-    "file": "assets/jost-600.eb256db3.ttf",
-    "src": "resources/fonts/jost-600.ttf"
-  },
   "resources/fonts/jost-500.ttf": {
     "file": "assets/jost-500.d9c4499e.ttf",
     "src": "resources/fonts/jost-500.ttf"
+  },
+  "resources/fonts/jost-600.ttf": {
+    "file": "assets/jost-600.eb256db3.ttf",
+    "src": "resources/fonts/jost-600.ttf"
   },
   "resources/fonts/jost-700.ttf": {
     "file": "assets/jost-700.6a101ab7.ttf",
@@ -389,30 +389,30 @@
       "resources/js/app.js"
     ]
   },
-  "logo.css": {
-    "file": "assets/logo.4a716d43.css",
-    "src": "logo.css"
-  },
-  "AppEditor.css": {
-    "file": "assets/AppEditor.cf27cbd8.css",
-    "src": "AppEditor.css"
-  },
   "resources/scss/app-media.scss": {
     "file": "assets/app-media.4c35d7b0.css",
     "src": "resources/scss/app-media.scss",
     "isEntry": true
   },
+  "vue-select.css": {
+    "file": "assets/vue-select.b0fac2a1.css",
+    "src": "vue-select.css"
+  },
+  "logo.css": {
+    "file": "assets/logo.4a716d43.css",
+    "src": "logo.css"
+  },
   "resources/js/app.css": {
     "file": "assets/app.98ede0f6.css",
     "src": "resources/js/app.css"
   },
+  "AppEditor.css": {
+    "file": "assets/AppEditor.cf27cbd8.css",
+    "src": "AppEditor.css"
+  },
   "resources/scss/app.scss": {
-    "file": "assets/app.4e7dedba.css",
+    "file": "assets/app.9375bcf5.css",
     "src": "resources/scss/app.scss",
     "isEntry": true
-  },
-  "vue-select.css": {
-    "file": "assets/vue-select.b0fac2a1.css",
-    "src": "vue-select.css"
   }
 }
