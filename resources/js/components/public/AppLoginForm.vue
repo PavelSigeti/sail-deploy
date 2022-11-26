@@ -3,6 +3,7 @@
         <div class="modal-background" @click="$emit('close');"></div>
         <div class="modal-container">
             <AppLoader v-if="loading"/>
+            <div class="close" @click="$emit('close');"></div>
             <h2>Вход</h2>
             <Form @submit="login" class="home-form" :validation-schema="validationSchema">
                 <div class="form-control">

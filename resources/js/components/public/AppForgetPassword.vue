@@ -2,6 +2,7 @@
     <div class="modal">
         <div class="modal-background" @click="$emit('close');"></div>
         <div class="modal-container">
+            <div class="close" @click="$emit('close');"></div>
             <AppLoader v-if="loading"/>
             <div class="loading-overlay" v-if="msg">
                 Проверьте свою почту

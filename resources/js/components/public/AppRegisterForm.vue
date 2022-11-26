@@ -2,6 +2,7 @@
     <div class="modal">
         <div class="modal-background" @click="$emit('close');"></div>
         <div class="modal-container">
+            <div class="close" @click="$emit('close');"></div>
             <AppLoader v-if="loading" />
             <h2>Регистрация</h2>
             <TheRegisterFormWizard :validation-schema="schema" @submitForm="register" @switchReg="switchToLogIn" />

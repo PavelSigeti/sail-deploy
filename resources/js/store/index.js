@@ -1,6 +1,7 @@
 import {createStore} from 'vuex';
 import auth from './modules/auth.module.js';
 import notification from './modules/notification.module.js';
+import sidebar from './modules/sidebar.module.js';
 
 export default createStore({
     state() {
@@ -15,6 +16,6 @@ export default createStore({
 
     },
     modules: {
-        auth, notification
+        auth, notification, sidebar,
     }
 });

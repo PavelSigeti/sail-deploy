@@ -22,7 +22,7 @@
         </keep-alive>
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 df">
                     <div class="home-container">
                         <div class="home-main">
                             <h1>Добро пожаловать,<br> на виртуальный<br> Кубок ИТМО<br> по парусному спорту</h1>
