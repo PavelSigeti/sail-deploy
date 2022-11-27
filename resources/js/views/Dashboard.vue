@@ -3,10 +3,10 @@
     <main>
         <div class="container-fluid g-0">
             <div class="row">
-                <div class="col-lg-5 col-xl-4">
+                <div class="col-lg-6 col-xxl-4">
                     <TheTeamSettings />
                 </div>
-                <div class="col-lg-7 col-xl-8">
+                <div class="col-lg-6 col-xxl-8">
                     <div class="dashboard-item">
                         <h3>Актуальные гонки</h3>
                         <div class="dash-stage__container">

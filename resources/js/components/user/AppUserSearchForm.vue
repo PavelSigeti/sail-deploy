@@ -1,5 +1,5 @@
 <template>
-    <form class="invite-form" >
+    <form class="invite-form" @submit.prevent>
         <div class="user-item" v-if="!selected">
             <div class="user-item__content">
                 <input
@@ -7,13 +7,13 @@
                     type="text"
                     id="user"
                     v-model="user"
-                    @input="search"
+                    @input="displaySearch = false"
                     placeholder="Найти пользователя"
                     autocomplete="off"
                 >
             </div>
             <div class="user-item__btn">
-                <div class="btn btn-default btn-team">Найти</div>
+                <div @click="search" :class="['btn', 'btn-team', {'btn-default': !displaySearch,'btn-border': displaySearch, }]">{{ displaySearch ? 'Отчистить' : 'Найти'}}</div>
             </div>
         </div>
         <div class="user-item" v-else>
@@ -31,7 +31,7 @@
                 <button @click.prevent="invite" class="btn btn-default btn-team">Пригласить</button>
             </div>
         </div>
-        <div class="search-container" v-if="searchCandidates && user.length > 0">
+        <div class="search-container" v-if="searchCandidates && user.length > 0 && displaySearch">
             <div class="search-candidate"
                  v-for="user in searchCandidates"
                  :key="user.id"
@@ -65,13 +65,21 @@ export default {
         const searchCandidates = ref(null);
         const selected = ref(null);
 
+        const displaySearch = ref(false);
+
         const search = async () => {
+            if(displaySearch.value === true) {
+                user.value = '';
+                displaySearch.value = false;
+                return;
+            }
             if(user.value.length > 0) {
                 const response = await axios.post('/api/user/search', {
                     user: user.value
                 });
                 if(response.data.length > 0) {
                     searchCandidates.value = response.data;
+                    displaySearch.value = true;
                 } else {
                     searchCandidates.value = null;
                 }
@@ -82,6 +90,7 @@ export default {
 
         const selectUser = (payload) => {
             user.value = '';
+            displaySearch.value = false;
             searchCandidates.value = null;
             selected.value = payload;
         };
@@ -122,6 +131,7 @@ export default {
         return {
             search, searchCandidates, user,
             invite, selected, selectUser,
+            displaySearch,
         }
     }
 }

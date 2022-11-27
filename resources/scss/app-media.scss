@@ -15,9 +15,19 @@
         grid-template-columns: 20% auto;
     }
 }
-@media screen and (max-width: 1450px) {
+@media screen and (max-width: 1399.98px) {
     .dash-stage__container {
         grid-template-columns: 1fr;
+    }
+    .user-item__btn {
+        width: 85px;
+    }
+    .btn-team {
+        width: 85px;
+        font-size: .9em;
+    }
+    .user-item__nickname {
+        font-size: 1em;
     }
 }
 @media screen and (max-width: 1299.98px) {
@@ -35,7 +45,9 @@
         position: absolute;
         right: 10px;
     }
-
+    .user-item__nickname {
+        font-size: .9em;
+    }
 }
 @media screen and (max-width: 1199.98px){
     body {
@@ -194,6 +206,10 @@
         h1 {
             font-size: 1.75em;
         }
+        .btn {
+            height: 40px;
+            padding: 0px 20px;
+        }
     }
     .home-link {
         font-size: 1.25em;
@@ -202,6 +218,9 @@
         font-size: .75em;
         width: 90px;
         height: 30px;
+    }
+    .dash-stage__date {
+        font-size: .9em;
     }
 }
 @media screen and (max-width: 360px){

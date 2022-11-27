@@ -17,8 +17,9 @@
 <script>
 import TheNavbar from "../components/TheNavbar.vue";
 import AppUser from '../components/ui/AppUser.vue';
-import {computed} from "vue";
+import {computed, watch} from "vue";
 import {useStore} from "vuex";
+import {useRouter} from "vue-router";
 
 export default {
     name: "TheSidebar",
@@ -27,11 +28,18 @@ export default {
     },
     setup() {
         const store = useStore();
+        const router = useRouter();
 
         const sidebar = computed(()=>store.getters['sidebar/status']);
         const close = () => {
             store.dispatch('sidebar/toggleStatus');
         };
+
+        watch(sidebar, () => {
+            router.beforeEach(() => {
+                store.dispatch('sidebar/toggleStatus');
+            });
+        });
 
         const logout = () => {
             store.dispatch('auth/logout');
