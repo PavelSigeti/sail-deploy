@@ -14,6 +14,12 @@
     .grid-container {
         grid-template-columns: 20% auto;
     }
+    .dash-stage__date {
+        font-size: .9em;
+    }
+    .result-table__item {
+        max-width: 1000px;
+    }
 }
 @media screen and (max-width: 1399.98px) {
     .dash-stage__container {
@@ -28,6 +34,9 @@
     }
     .user-item__nickname {
         font-size: 1em;
+    }
+    .result-table__item {
+        max-width: 900px;
     }
 }
 @media screen and (max-width: 1299.98px) {
@@ -48,6 +57,9 @@
     .user-item__nickname {
         font-size: .9em;
     }
+    .result-table__item {
+        max-width: 830px;
+    }
 }
 @media screen and (max-width: 1199.98px){
     body {
@@ -65,6 +77,9 @@
     .grid-container {
         grid-template-columns: 25% auto;
     }
+    .result-table__item {
+        max-width: 630px;
+    }
 }
 @media screen and (max-width: 991.98px){
     .home-main h1 {
@@ -77,6 +92,9 @@
         img {
             display: none;
         }
+    }
+    .result-table__item {
+        max-width: 450px;
     }
 }
 @media screen and (max-width: 767.98px){
@@ -106,6 +124,7 @@
     }
     .grid-container {
         grid-template-columns: 1fr;
+        padding: 0 15px;
     }
     .sidebar-container {
         max-width: 350px;
@@ -149,6 +168,7 @@
     }
     .mobile-header__left {
         display: flex;
+        align-items: center;
     }
     .hide767 {
         display: none;
@@ -156,6 +176,9 @@
     }
     h1 {
         font-size: 2em;
+    }
+    .result-table__item {
+        max-width: calc(100vw - 90px);
     }
 }
 @media screen and (max-width: 575.98px){
@@ -193,6 +216,12 @@
         margin-right: 5px;
         font-size: .9em;
     }
+    .user-stage, .dashboard-item {
+        padding: 15px;
+    }
+    .result-table__item {
+        max-width: calc(100vw - 60px);
+    }
 }
 @media screen and (max-width: 400.98px){
     body {
@@ -218,9 +247,6 @@
         font-size: .75em;
         width: 90px;
         height: 30px;
-    }
-    .dash-stage__date {
-        font-size: .9em;
     }
 }
 @media screen and (max-width: 360px){

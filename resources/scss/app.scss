@@ -1,6 +1,5 @@
 @import '~reset-css';
 @import '~bootstrap';
-@import './app-media.scss';
 
 $dark: #242424;
 $grey: #EEEEEE;
@@ -49,7 +48,11 @@ header {
 }
 .logo {
     width: 140px;
-    height: auto;
+    height: 30px;
+}
+.homepage-link {
+    width: auto;
+    height: 30px;
 }
 .btn {
     background-color: rgba(255, 255, 255, 0);
@@ -83,7 +86,8 @@ header {
 }
 .btn-settings-280 {
     height: 50px;
-    width: 280px;
+    max-width: 280px;
+    width: 100%;
 }
 .login-btn {
     height: 50px;
@@ -331,7 +335,7 @@ h2 {
 .sidebar-container {
     position: relative;
     border-right: 1px solid #ddd;
-    padding-top: 30px;
+    display: flex;
     .close {
         display: none;
         visibility: hidden;
@@ -339,15 +343,20 @@ h2 {
     }
 }
 .sidebar {
-    top: 30px;
+    padding-top: 30px;
+    padding-left: 30px;
     position: sticky;
     height: calc(100vh - 30px);
     width: 100%;
-    padding-right: calc(var(--bs-gutter-x) * 0.5);
-    padding-left: calc(var(--bs-gutter-x) * 0.5);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 .sidebar-bottom {
     width: 100%;
@@ -588,6 +597,7 @@ h1 {
         border: none;
         padding: 10px 15px;
         vertical-align: middle;
+        white-space: nowrap;
         &:nth-child(2) {
             text-align: left;
         }
@@ -732,7 +742,8 @@ h1 {
     }
 }
 .user-stage__info {
-    width: 280px;
+    width: 100%;
+    max-width: 280px;
     height: 50px;
     border-radius: 10px;
     background-color: #EBEBEB;
@@ -796,8 +807,9 @@ h1 {
     display: grid;
     grid-gap: 30px;
     grid-template-columns: calc(1/6 * 100%) auto;
-    padding: 0 30px;
+    padding-right: 30px;
 }
+
 .support-container {
     display: flex;
     position: fixed;
@@ -1014,7 +1026,12 @@ h1 {
     width: 100%;
     align-items: center;
 }
-
+.result-table__item {
+    position: relative;
+    overflow: auto;
+    max-width: 1100px;
+    width: 100%;
+}
 
 
 

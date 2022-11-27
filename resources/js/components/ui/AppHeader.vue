@@ -3,7 +3,7 @@
         <div class="mobile-header">
             <div class="mobile-header__left">
                 <div class="sidebar-bars" @click="sidebar"><div class="bars"></div></div>
-                <router-link to="/dashboard"><img src="@/static/logo.svg" alt="vrisc logo" class="logo"></router-link>
+                <router-link class="homepage-link" to="/dashboard"><img src="@/static/logo.svg" alt="vrisc logo" class="logo"></router-link>
             </div>
             <div class="header-content">
                 <div class="btn btn-border support-btn" @click="support = true; bodyOverflow(false)">Обратная связь</div>

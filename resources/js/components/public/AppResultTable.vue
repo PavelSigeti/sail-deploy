@@ -5,7 +5,7 @@
             v-for="(status, key) in results" :key="key"
         >
 
-            <div v-for="(group, _, idx)  in status" :key="_">
+            <div class="result-table__item" v-for="(group, _, idx)  in status" :key="_">
                 <h3 v-if="statusTitle[key] !== 'Гонка'">{{statusTitle[key]}} #{{idx+1}}</h3>
                 <table class="result-table">
                     <thead>
