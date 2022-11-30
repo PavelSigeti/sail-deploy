@@ -17,7 +17,7 @@ window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.withCredentials = true;
 window.axios.interceptors.response.use(null, async (error) => {
-    if ( (error.response.status === 401 || error.response.status === 419) ?? router.currentRoute._value.name !== 'Home') {
+    if ( (error.response.status === 401 || error.response.status === 419) && router.currentRoute._value.name !== 'Home') {
         await axios.get('/sanctum/csrf-cookie');
         store.dispatch('auth/logout');
         router.push({name: 'Login'});
