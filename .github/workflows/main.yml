@@ -23,12 +23,11 @@ jobs:
         run: npm run build
 
       - name: Deployment
-        uses: appleboy/ssh-action@master
+        uses: cross-the-world/ssh-pipeline@master
         with:
-          host: xoqpox10.beget.tech
-          username: xoqpox10
-          key: ${{ secrets.SECRET_KEY }}
-          port: 22
+          host: ${{ secrets.SECRET_HOST }}
+          user: ${{ secrets.SECRET_USER }}
+          pass: ${{ secrets.SECRET_PASS }}
           script: |
             cd vrisc.ru
             git pull
