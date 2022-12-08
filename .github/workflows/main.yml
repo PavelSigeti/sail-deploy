@@ -23,11 +23,12 @@ jobs:
         run: npm run build
 
       - name: Deployment
-        uses: docker://evaneos/ssh-action:0.1.0
+        uses: appleboy/ssh-action@master
         with:
-          hosts: ${{ secrets.SECRET_HOST }}
-          user: ${{ secrets.SECRET_USER }}
-          password: ${{ secrets.SECRET_PASS }}
-          commands: |
+          host: ${{ secrets.SECRET_HOST }}
+          username: ${{ secrets.SECRET_USER }}
+          key: ${{ secrets.SECRET_KEY }}
+          port: 22
+          script: |
             cd vrisc.ru
             git pull
