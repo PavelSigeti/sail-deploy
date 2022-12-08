@@ -25,8 +25,8 @@ jobs:
       - name: Deployment
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SECRET_HOST }}
-          username: ${{ secrets.SECRET_USER }}
+          host: xoqpox10.beget.tech
+          username: xoqpox10
           key: ${{ secrets.SECRET_KEY }}
           port: 22
           script: |
