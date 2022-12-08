@@ -23,11 +23,11 @@ jobs:
         run: npm run build
 
       - name: Deployment
-        uses: cross-the-world/ssh-pipeline@master
+        uses: docker://evaneos/ssh-action:0.1.0
         with:
-          host: ${{ secrets.SECRET_HOST }}
+          hosts: ${{ secrets.SECRET_HOST }}
           user: ${{ secrets.SECRET_USER }}
-          pass: ${{ secrets.SECRET_PASS }}
-          script: |
+          password: ${{ secrets.SECRET_PASS }}
+          commands: |
             cd vrisc.ru
             git pull
