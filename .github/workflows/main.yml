@@ -36,8 +36,9 @@ jobs:
           host: ${{ secrets.SECRET_HOST }}
           username: ${{ secrets.SECRET_USER }}
           key: ${{ secrets.SECRET_KEY }}
-          source: "*"
-          target: "target"
+          overwrite: true
+          source: "*, !node_modules"
+          target: "vrisc.ru"
 
 #      - name: Deployment
 #        uses: appleboy/ssh-action@master
