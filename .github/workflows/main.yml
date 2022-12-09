@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  frontend:
+  Deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -21,28 +21,6 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Get composer cache directory
-        id: composer_config
-        uses: baschny/php-composer-action@v1
-        with:
-          composer_version: 2.4
-          command: get_config
-
-      - name: Cache composer downloads
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.composer_config.outputs.composer_cache_dir }}
-          key: composer-v${{ steps.composer_config.outputs.composer_major_version }}
-
-      - name: Run composer install
-        uses: baschny/php-composer-action@v1
-        with:
-          composer_version: 2.4
-          command: install
 
       - name: Deployment
         uses: appleboy/scp-action@master
