@@ -27,15 +27,14 @@ jobs:
         with:
           name: Build files
           path: |
-            public
+            public/build
 
       - name: Deployment
-        uses: appleboy/ssh-action@master
+        uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SECRET_HOST }}
           username: ${{ secrets.SECRET_USER }}
           key: ${{ secrets.SECRET_KEY }}
-          port: 22
-          script: |
-            cd vrisc.ru
-            git pull
+          rm: true
+          source: ".,!node_modules"
+          target: "~/vrisc.ru"
