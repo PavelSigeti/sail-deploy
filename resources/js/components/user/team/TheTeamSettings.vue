@@ -28,16 +28,12 @@
                     </div>
                 </div>
         </div>
-        <div v-else class="content-block">
-            <p>Вы не состоите в команде :(</p>
-            <form  @submit.prevent="submit">
-                <div class="form-control">
-                    <label for="name">Создайте свою команду</label>
-                    <input class="form-input" id="name" type="text" v-model="name" placeholder="Название команды">
-                </div>
-                <button class="btn btn-default btn-full-width">Создать команду</button>
-            </form>
-        </div>
+
+        <AppCreateTeam
+            v-else
+            @loading="(payload) => {loading = payload}"
+            @loadData="getData()"
+        />
 
         <div class="team-invites" v-if="teamInvites && teamInvites.length > 0">
             <div
@@ -102,17 +98,17 @@ import AppTeamInvite from "./AppTeamInvite.vue";
 import { useStore } from "vuex";
 import AppLoader from "../../ui/AppLoader.vue";
 import AppConfirmation from "../../ui/AppConfirmation.vue";
+import AppCreateTeam from "../../ui/AppCreateTeam.vue";
 
 export default {
     name: "TheTeamSettings",
     components: {
         AppUserSearchForm, AppTeamInvite, AppLoader,
-        AppConfirmation,
+        AppConfirmation, AppCreateTeam,
     },
     setup() {
         const store = useStore();
 
-        const name = ref();
         const team = ref();
         const invites = ref();
         const owner = ref(false);
@@ -143,26 +139,6 @@ export default {
         onMounted(async() => {
             await getData();
         });
-
-        const submit = async () => {
-            loading.value = true;
-            try {
-                await axios.post('/api/team/store', {
-                    name: name.value,
-                });
-                await getData();
-            } catch (e) {
-                if(e.response.status === 422) {
-                    store.dispatch('notification/displayMessage', {
-                        value: 'Такое имя команды уже существует',
-                        type: 'error',
-                    });
-                } else {
-                    console.log(e.message);
-                }
-            }
-            loading.value = false;
-        };
 
         const cancelInvite = async (id, idx) => {
             loading.value = true;
@@ -232,11 +208,11 @@ export default {
         };
 
         return {
-            name, team, submit,
-            owner, addInvite, teamInvites,
+            name, team, owner,
             cancelInvite, teammates, invites,
             getData, removeTeammate, deleteTeam,
             loading, toggleLoad, leaveConfirm,
+            addInvite, teamInvites,
         }
     }
 }

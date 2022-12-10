@@ -3,7 +3,7 @@
     <main>
         <div class="container-fluid g-0">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-6 col-xl-5 col-xxl-4">
                     <div class="dashboard-item">
                         <AppLoader v-if="loading" />
                         <h3>Данные пользователя</h3>

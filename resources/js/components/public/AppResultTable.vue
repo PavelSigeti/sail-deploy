@@ -26,7 +26,11 @@
                                     {{user[0].name}} {{user[0].surname}} <span class="result-table__nick">{{user[0].nickname}}</span>
                                 </div>
                             </td>
-                            <td v-for="race in user">{{(race.drop) ?  (race.place === group.length + 1 )? `(dnf, ${race.place})` : `(${race.place})` : race.place ?? user.sum}}</td>
+                            <td v-for="race in user">
+                                {{
+                                    printValue(race, user.sum, group.length)
+                                }}
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -58,8 +62,23 @@ export default {
             }
         });
 
+        const printValue = (race, sum, group) => {
+            if(race.null) {
+                return '—';
+            }
+            if(race.drop) {
+                if( race.place === group + 1 ) {
+                    return `(dnf, ${group + 1})`;
+                } else {
+                    return `(${race.place})`;
+                }
+            } else {
+                return race.place ?? sum;
+            }
+        };
+
         return {
-            results, statusTitle,
+            results, statusTitle, printValue,
         }
     }
 }

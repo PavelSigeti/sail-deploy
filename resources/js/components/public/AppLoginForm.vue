@@ -55,7 +55,7 @@ export default {
 
         const validationSchema = yup.object({
             email: yup.string().required('Введите E-mail').email('Не корректный E-mail'),
-            password: yup.string().required('Введите пароль').min(3, 'Пароль от 3 символов'),
+            password: yup.string().required('Введите пароль').min(8, 'Пароль от 8 символов'),
         });
 
         const login = (values) => {

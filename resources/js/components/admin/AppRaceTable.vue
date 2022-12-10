@@ -74,9 +74,6 @@ export default {
                 lastRaceId.value = raceData.value[0].race_id;
                 const users = await axios.get(`/api/admin/race/${lastRaceId.value}/users`);
                 usersData.value = users.data;
-
-                console.log('usersData', usersData.value);
-
                 await getTotal();
             } catch (e) {
                 console.log(e.message);

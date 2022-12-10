@@ -13,6 +13,7 @@ class CalcStageGroupTable
             foreach ($user as $key => $race) {
                 if($race['place'] === null) {
                     $results[$userId][$key]['place'] = $dnf;
+                    $results[$userId][$key]['null'] = true;
                 }
             }
             $results[$userId] = $user->sort(function($a, $b){
@@ -65,22 +66,6 @@ class CalcStageGroupTable
         $response = $response->sortBy(function($user, $key) use ($sortIds){
             return array_search($key, $sortIds);
         })->values();
-
-//
-//        $response = $response->map(function($item) {
-//            $data = $item->mapWithKeys(function($race, $key) {
-//                if($key !== 'sum') {
-//                    return [$key => $race->only(['race_id', 'place', 'drop', 'status'])];
-//                }
-//                return [$key => $race];
-//            });
-//            return $data
-//                ->put('id', $item->first()->id)
-//                ->put('name', $item->first()->name)
-//                ->put('surname', $item->first()->surname)
-//                ->put('nickname', $item->first()->nickname);
-//        });
-//
 
 
         return $response;

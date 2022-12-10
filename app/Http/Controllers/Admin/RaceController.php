@@ -35,9 +35,11 @@ class RaceController extends Controller
 
         $race = $this->raceRepository->getById($id);
         $results = collect($request->result);
+        $count = $results->count();
 
-        $results = $results->mapWithKeys(function ($item, $key) {
-            return [$key => ['place' => $item]];
+
+        $results = $results->mapWithKeys(function ($item, $key) use ($count) {
+            return [$key => ['place' => $item === null ? $count+1 : $item]];
         });
 
         $race->users()->sync($results);
