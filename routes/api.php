@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/stage/{id}/cancel', [\App\Http\Controllers\User\StageController::class, 'cancel']);
 
     Route::post('/feedback', [\App\Http\Controllers\User\FeedbackController::class, 'store']);
+
+    Route::get('/stage/{id}/show-users', [\App\Http\Controllers\User\StageController::class, 'showForUsers']);
 });
 
 Route::group(['middleware' => ['auth:sanctum',  'admin' ]], function () {

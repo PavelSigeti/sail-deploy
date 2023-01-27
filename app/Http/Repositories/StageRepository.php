@@ -36,6 +36,21 @@ class StageRepository extends CoreRepository
 
     public function getByIdWithUsers($id)
     {
+        $columns = [
+            'status','title', 'register_start',
+            'register_end', 'race_start', 'description',
+            'id',
+        ];
+        $result = $this->startConditions()
+            ->select($columns)
+            ->with('users:name,surname,nickname,id')
+            ->find($id);
+
+        return $result;
+    }
+
+    public function getByIdWithUsersAdmin($id)
+    {
         $result = $this->startConditions()
             ->with('users:name,surname,nickname,id')
             ->find($id);

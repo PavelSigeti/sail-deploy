@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'name' => 'Кирилл',
             'surname' => 'Admin',
             'email' => 'admin@admin.com',
-            'password' => bcrypt('123'),
+            'password' => bcrypt('123123qq'),
 //            'team_id' => 1,
             'university_id' => 1,
             'nickname' => 'Admin',

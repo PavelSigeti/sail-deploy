@@ -82,4 +82,16 @@ class StageController extends Controller
         }
     }
 
+
+    public function showForUsers($id)
+    {
+        $user = Auth::user();
+
+        if($user->stages->where('id', $id)->count() === 1) {
+            return $this->stageRepository->getByIdWithUsersAdmin($id);
+        }
+
+        return $this->stageRepository->getByIdWithUsers($id);
+    }
+
 }

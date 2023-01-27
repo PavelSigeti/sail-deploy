@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Repositories\RaceRepository;
 use App\Http\Repositories\StageRepository;
 use App\Http\Repositories\UserRepository;
+use Illuminate\Support\Facades\Auth;
 
 class StageController extends Controller
 {

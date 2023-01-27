@@ -11,6 +11,9 @@
                             <span>Начало гонок: {{time(stage.race_start)}}</span>
                         </div>
                     </div>
+                    <div class="dashboard-item" v-if="stage && stage.participant_text">
+                        <div class="content" v-html="stage.participant_text"></div>
+                    </div>
                     <div class="dashboard-item" v-if="stage && stage.description">
                         <div class="content" v-html="stage.description"></div>
                     </div>
@@ -46,7 +49,7 @@ export default {
         const h1 = ref('');
         onMounted(async () => {
             try {
-                const response = await axios.get(`/api/stage/${id}/show`);
+                const response = await axios.get(`/api/stage/${id}/show-users`);
                 stage.value = response.data;
                 h1.value = stage.value.title;
             } catch (e) {

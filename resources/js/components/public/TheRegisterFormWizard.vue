@@ -53,7 +53,7 @@
             </div>
             <div class="form-control">
                 <Field name="nickname" v-slot="{ field, errors }">
-                    <input v-bind="field" type="text" :class="['form-input', {'invalid': !!errors.length} ]" placeholder="Никнейм в игре"  />
+                    <input v-bind="field" type="text" :class="['form-input', {'invalid': !!errors.length} ]" placeholder="Никнейм в Virtual Regatta"  />
                 </Field>
                 <ErrorMessage class="alert" name="nickname" />
             </div>

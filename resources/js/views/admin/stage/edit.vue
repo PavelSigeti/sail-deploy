@@ -43,6 +43,10 @@
                                 <label for="description">Описание</label>
                                 <AppEditor v-if="description" v-model:modelValue="description" id="description" />
                             </div>
+                            <div class="form-control">
+                                <label for="participant_text">Для участников</label>
+                                <AppEditor v-if="participant_text" v-model:modelValue="participant_text" id="participant_text" />
+                            </div>
 
                             <button class="btn btn-default btn-settings">Редактировать</button>
                         </form>
@@ -106,6 +110,7 @@ export default {
         const title = ref('');
         const excerpt = ref('');
         const description = ref('');
+        const participant_text = ref('');
         const users = ref();
         const status = ref();
         const race_amount_drop = ref();
@@ -140,12 +145,15 @@ export default {
                 race_start.value = data.data.race_start;
                 excerpt.value = data.data.excerpt ? data.data.excerpt : ' ';
                 description.value = data.data.description ? data.data.description : ' ';
+                participant_text.value = data.data.participant_text ? data.data.participant_text : ' ';
                 users.value = data.data.users;
                 race_amount_drop.value = data.data.race_amount_drop;
                 race_amount_group_drop.value = data.data.race_amount_group_drop;
                 race_amount_fleet_drop.value = data.data.race_amount_fleet_drop;
                 await statusGroupFetch(data.data.status);
                 loading.value = false;
+
+                console.log('data', data.data);
             } catch (e) {
                 console.log(e.message);
                 loading.value = false;
@@ -159,6 +167,7 @@ export default {
                     title: title.value,
                     description: description.value,
                     excerpt: excerpt.value,
+                    participant_text: participant_text.value,
                     register_start: register_start.value,
                     register_end: register_end.value,
                     race_start: race_start.value,
@@ -194,7 +203,7 @@ export default {
             id, statusGroup, child,
             race_amount_drop, race_amount_group_drop, race_amount_fleet_drop,
             statusGroupFetch, resultComponent, h1,
-            loading,
+            loading, participant_text,
         }
     }
 }

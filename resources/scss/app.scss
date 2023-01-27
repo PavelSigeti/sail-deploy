@@ -230,10 +230,17 @@ h2 {
 }
 .link {
     cursor: pointer;
+    color: #242424;
     transition: .3s;
     &:hover {
         opacity: .8;
     }
+}
+.reg-info {
+    background-color: #dce5fc;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 .menu-item {
     margin-right: 10px;

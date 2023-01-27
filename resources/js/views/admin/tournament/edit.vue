@@ -97,7 +97,6 @@ export default {
                 description.value = tournament.data.description ? tournament.data.description : ' ';
                 const stageData = await axios.get(`/api/admin/stage/${id}`);
                 stages.value = stageData.data;
-                console.log('stages', stages.value);
             } catch (e) {
                 console.log(e.message);
             }

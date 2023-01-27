@@ -44,7 +44,7 @@ class StageController extends Controller
 
     public function edit($id)
     {
-        return $this->stageRepository->getByIdWithUsers($id);
+        return $this->stageRepository->getByIdWithUsersAdmin($id);
     }
 
     public function getStageStatusGroup($id)
@@ -121,6 +121,7 @@ class StageController extends Controller
             'register_start', 'register_end', 'race_start',
             'title', 'excerpt', 'description',
             'race_amount_drop', 'race_amount_group_drop', 'race_amount_fleet_drop',
+            'participant_text',
         ]));
 
         return true;

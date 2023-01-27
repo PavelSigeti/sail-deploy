@@ -32,6 +32,7 @@ class StageUpdateRequest extends FormRequest
             'title' => 'required|string',
             'excerpt' => 'nullable|string',
             'description' => 'nullable|string',
+            'participant_text' => 'nullable|string',
             'race_amount_drop' => 'required|integer',
             'race_amount_group_drop' => 'required|integer',
             'race_amount_fleet_drop' => 'required|integer',

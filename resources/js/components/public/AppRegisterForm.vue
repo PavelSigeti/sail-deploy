@@ -5,6 +5,9 @@
             <div class="close" @click="$emit('close');"></div>
             <AppLoader v-if="loading" />
             <h2>Регистрация</h2>
+            <div class="reg-info form-info">
+                У вас должен быть аккаунт в Virtual Regatta, создать можно – <a class="underline link" href="https://www.virtualregatta.com/en/inshore-game/" target="_blank">здесь</a>
+            </div>
             <TheRegisterFormWizard :validation-schema="schema" @submitForm="register" @switchReg="switchToLogIn" />
         </div>
     </div>

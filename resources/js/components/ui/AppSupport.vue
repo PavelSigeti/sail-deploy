@@ -61,7 +61,6 @@ export default {
       loading.value = true;
       try {
         const response = await axios.post('/api/feedback', valuse);
-        console.log('response', response.data);
       } catch (e) {
         console.log(e.message);
       }

@@ -15,9 +15,9 @@
                         </div>
                         <form @submit.prevent="submit">
                             <div class="form-control">
-                                <label for="nickname">Никнейм в игре</label>
+                                <label for="nickname">Никнейм в Virtual Regatta</label>
                                 <Field v-model="nickname" name="nickname" v-slot="{ field, errors }">
-                                    <input v-bind="field" type="text" :class="['form-input', {'invalid': !!errors.length} ]" placeholder="Никнейм в игре"  />
+                                    <input v-bind="field" type="text" :class="['form-input', {'invalid': !!errors.length} ]" placeholder="Никнейм в Virtual Regatta"  />
                                 </Field>
                                 <ErrorMessage class="alert" name="nickname" />
                             </div>
