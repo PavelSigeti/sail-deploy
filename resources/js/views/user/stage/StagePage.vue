@@ -11,7 +11,7 @@
                             <span>Начало гонок: {{time(stage.race_start)}}</span>
                         </div>
                     </div>
-                    <div class="dashboard-item" v-if="stage && stage.participant_text">
+                    <div class="dashboard-item" v-if="stage && stage.participant_text && stage.status !== 'active'">
                         <div class="content" v-html="stage.participant_text"></div>
                     </div>
                     <div class="dashboard-item" v-if="stage && stage.description">
@@ -52,6 +52,7 @@ export default {
                 const response = await axios.get(`/api/stage/${id}/show-users`);
                 stage.value = response.data;
                 h1.value = stage.value.title;
+                console.log(stage.value.status);
             } catch (e) {
                 console.log(e.message);
             }
