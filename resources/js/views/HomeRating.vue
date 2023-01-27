@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 mt30 mb30">
-                    <h1>Рейтинг лиги</h1>
+                    <h1>Рейтинг кубка</h1>
                 </div>
                 <div class="col-12">
                     <div class="tabs">
