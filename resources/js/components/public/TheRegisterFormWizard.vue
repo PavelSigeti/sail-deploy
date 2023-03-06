@@ -36,7 +36,7 @@
             </div>
             <div class="form-info mb15">Отправляя форму, вы соглашаетесь на обработку <span class="underline link" @click="">персональных данных</span></div>
             <div class="btn btn-default btn-home" @click="submit">Продолжить (1 из 2)</div>
-            <div class="form-info jcc">Есть аккаунта?&nbsp;<span class="underline link" @click="$emit('switchReg')">Войти</span></div>
+            <div class="form-info jcc">Есть аккаунт?&nbsp;<span class="underline link" @click="$emit('switchReg')">Войти</span></div>
         </div>
         <div class="reg-step" v-if="step===1">
             <div class="form-control">
